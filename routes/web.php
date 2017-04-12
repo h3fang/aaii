@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', function () { return view('pages.home'); });
+Route::get('/research', function () { return view('pages.research'); });
+Route::get('/members', function () { return view('pages.members'); });
+Route::get('/publications', function () { return view('pages.publications'); });
+Route::get('/courses', function () { return view('pages.courses'); });
+Route::get('/download', function () { return view('pages.download'); });
+Route::get('/about', function () { return view('pages.about'); });
+
+Route::get('/news/manage', 'NewsController@manage');
+
+Route::resource('news', 'NewsController');
+Route::resource('page', 'PageController');
+Route::resource('member', 'MemberController');

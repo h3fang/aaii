@@ -8,10 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>AAII Lab - @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <style>
+        #copyright { text-Align:center; }
+        #brand-img {max-height: 100%; width: auto; display:block;}
+        #brand-logo {padding: 0px; margin-right: 50px;}
+    </style>
 
     <!-- Scripts -->
     <script>
@@ -35,9 +41,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    <a id="brand-logo" class='navbar-brand' href='/'><img id="brand-img" src="/image/logo1.svg"/></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

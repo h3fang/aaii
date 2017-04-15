@@ -18,9 +18,10 @@ Route::get('/members', 'PageController@members');
 Route::get('/download', 'PageController@download');
 
 Route::get('/news/manage', 'NewsController@manage');
+Route::get('/page/manage', 'PageController@manage');
 
 Route::resource('news', 'NewsController');
-Route::resource('page', 'PageController');
+Route::resource('page', 'PageController', ['except' => [ 'index' ]]);
 Route::resource('member', 'MemberController');
 
 Route::get('/{id}', 'PageController@show');

@@ -33,10 +33,10 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function manage()
     {
         $pages = Page::orderBy('order', 'asc')->paginate(5);
-        return view('page.index')->withPages($pages);
+        return view('page.manage')->withPages($pages);
     }
 
     /**

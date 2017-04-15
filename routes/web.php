@@ -13,16 +13,14 @@
 
 Auth::routes();
 
-Route::get('/', function () { return view('pages.home'); });
-Route::get('/research', function () { return view('pages.research'); });
-Route::get('/members', function () { return view('pages.members'); });
-Route::get('/publications', function () { return view('pages.publications'); });
-Route::get('/courses', function () { return view('pages.courses'); });
-Route::get('/download', function () { return view('pages.download'); });
-Route::get('/about', function () { return view('pages.about'); });
+Route::get('/', 'PageController@home');
+Route::get('/members', 'PageController@members');
+Route::get('/download', 'PageController@download');
 
 Route::get('/news/manage', 'NewsController@manage');
 
 Route::resource('news', 'NewsController');
 Route::resource('page', 'PageController');
 Route::resource('member', 'MemberController');
+
+Route::get('/{id}', 'PageController@show');

@@ -63,7 +63,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $news = News::find($id);
+        $news = News::findOrFail($id);
         return view('news.show')->withNews($news);
     }
 
@@ -75,6 +75,7 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
+        $news = News::findOrFail($id);
         return view('news.edit')->withNews($news);
     }
 
@@ -88,7 +89,7 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, array('title' => 'required|max:255', 'content' => 'required'));
-        $news = News::find($id);
+        $news = News::findOrFail($id);
         $news->title = $request->title;
         $news->content = $request->content;
         $news->save();
@@ -105,7 +106,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $news = News::find($id);
+        $news = News::findOrFail($id);
         $news->delete();
         return redirect()->route('news.manage');
     }

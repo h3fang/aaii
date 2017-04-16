@@ -2,6 +2,12 @@
 
 @section('title', 'All News')
 
+@section('stylesheet')
+  <style>
+      .table > tbody > tr > td { vertical-align: middle; }
+  </style>
+@endsection
+
 @section('content')
   <div class="row">
     <div class="col-md-8 col-md-offset-2">

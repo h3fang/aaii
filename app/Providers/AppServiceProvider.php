@@ -15,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        view()->composer('partials.navbar', function($view) {
+            $view->with("pages", \App\Page::orderBy('order', 'asc')->get());
+        });
     }
 
     /**

@@ -27,8 +27,8 @@
         <table class="table table-striped table-hover" style="width:100%">
           <colgroup>
             <col class="col-md-1">
-            <col class="col-md-1">
-            <col class="col-md-4">
+            <col class="col-md-3">
+            <col class="col-md-2">
             <col class="col-md-2">
             <col class="col-md-2">
             <col class="col-md-2">

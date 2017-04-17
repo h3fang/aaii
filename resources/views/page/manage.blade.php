@@ -69,8 +69,8 @@
           <input id="order" type="hidden" name="order" value="">
           {{csrf_field()}}
            
-          <button type="submit" class="btn btn-success">Save Changes</button>
-          <a class="btn btn-warning" href="/page/manage" role="button">Discard Changes</a>
+          <button id="save_button" type="submit" class="btn btn-default" disabled>Save New Order</button>
+          <a id="discard_button" class="btn btn-default disabled" href="/page/manage" role="button">Discard Order Changes</a>
         </form>
       </div>
       
@@ -87,6 +87,11 @@
       onSort: function (/**Event*/evt) {
     		// same properties as onUpdate
     		document.getElementById('order').value = this.toArray().join();
+    		document.getElementById('save_button').disabled = false;
+    		$('#save_button').removeClass('btn-default');
+    		$('#save_button').addClass('btn-success');
+    		$('#discard_button').removeClass('btn-default disabled');
+    		$('#discard_button').addClass('btn-warning');
     	},
     });
   </script>

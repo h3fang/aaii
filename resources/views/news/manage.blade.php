@@ -53,8 +53,8 @@
                 <a class="btn btn-primary" href="/news/{{$n->id}}/edit" role="button">Edit</a>
                 <form style="display:inline" method="POST" action="{{ route('news.destroy', $n->id) }}">
                   <input type="submit" value="Delete" class="btn btn-danger">
-                  <input type="hidden" name="_token" value="{{ Session::token() }}">
-                   {{ method_field('DELETE') }}
+                  {{csrf_field()}}
+                  {{ method_field('DELETE') }}
                 </form>
               </td>
             </tr>

@@ -19,6 +19,7 @@ Route::get('/download', 'PageController@download');
 
 Route::get('/news/manage', 'NewsController@manage');
 Route::get('/page/manage', 'PageController@manage');
+Route::post('/page/order', 'PageController@order');
 
 Route::resource('news', 'NewsController');
 Route::resource('page', 'PageController', ['except' => [ 'index' ]]);

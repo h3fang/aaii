@@ -35,7 +35,7 @@ class PageController extends Controller
      */
     public function manage()
     {
-        $pages = Page::orderBy('order', 'asc')->paginate(5);
+        $pages = Page::orderBy('order', 'asc')->get();
         return view('page.manage')->withPages($pages);
     }
 
@@ -113,6 +113,49 @@ class PageController extends Controller
         Session::flash('success', 'This page was successfully edited.');
         return redirect()->route('page.show', $page->slug);
     }
+    
+    public function order(Request $request)
+    {
+        $this->validate($request, array('order' => 'required'));
+        
+        $original_orders = Page::orderBy('order', 'asc')->pluck('id')->toArray();
+        
+        // validate input
+        $order_strs = explode(',', $request->order);
+        $orders = array();
+        foreach ($order_strs as $str) {
+            if (is_numeric($str)) {
+                $o = intval($str);
+                if ($o != 0) {
+                    array_push($orders, $o);
+                    continue;
+                }
+            }
+            
+            return redirect('/page/manage');
+        }
+        
+        $tmp_orders = $orders;
+        if ( !sort($original_orders) || !sort($tmp_orders) ) {
+            return redirect('/page/manage');
+        }
+        
+        if ( !empty(array_diff($original_orders, $tmp_orders)) ) {
+            return redirect('/page/manage');
+        }
+        
+        // valid input, save the new order
+        $i = 1;
+        foreach ($orders as $o) {
+            $page = Page::where('id', $o)->firstOrFail();
+            $page->order = $i;
+            $page->save();
+            $i++;
+        }
+        
+        Session::flash('success', 'Pages were successfully re-ordered.');
+        return redirect('/page/manage');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -123,7 +166,7 @@ class PageController extends Controller
     public function destroy($id)
     {
         $page = Page::where('slug', $id)->firstOrFail();
-        $page->destroy();
-        return redirect()->route('page.index');
+        $page->delete();
+        return redirect('/page/manage');
     }
 }

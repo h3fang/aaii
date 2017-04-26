@@ -31,6 +31,7 @@
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
+                    <li><a href="/manage">Manage</a></li>
                     <li>
                         <a href="logout"
                             onclick="event.preventDefault();

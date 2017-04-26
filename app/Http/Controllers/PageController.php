@@ -20,7 +20,7 @@ class PageController extends Controller
     public function members()
     {
         $members = Member::orderBy('order', 'asc')->get();
-        return view('page.members')->withMembers($members);
+        return view('member.members')->withMembers($members);
     }
     
     public function download()
@@ -62,7 +62,7 @@ class PageController extends Controller
         $page->title = $request->title;
         $page->slug = str_slug($request->title);
         $page->content = $request->content;
-        $page->order = DB::table('pages')->count() + 1;
+        $page->order = Page::count() + 1;
         $page->created_by = Auth::guest() ? 0 : Auth::user()->id;
         $page->save();
         

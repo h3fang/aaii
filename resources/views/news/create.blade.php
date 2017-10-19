@@ -4,12 +4,13 @@
 
 @section('stylesheet')
 <!-- include summernote css-->
-<link href="/summernote/summernote.css" rel="stylesheet">
+<!--<link href="/summernote/summernote.css" rel="stylesheet">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" integrity="sha256-aPZA+1C6XF5GxyRhgHoBK2JZkT+bagcjz+lk6i5vmVs=" crossorigin="anonymous" />
 @endsection
 
 @section('content')
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 mr-auto ml-auto">
     <h1>Create News</h1>
     
     @include('partials.errors')
@@ -37,8 +38,7 @@
 @section('javascript')
 <!-- include summernote js-->
 <!--<script src="/summernote/summernote.min.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.min.js" integrity="sha256-+xpvFKckte4EEA5HIpqOOD2jNuVZJEwS5hGZJx+aCgc=" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.min.js" integrity="sha256-OFo8GrjjlTzhKYk4WNck1H5dIvBtJ0yArqCRFYVkdkU=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function() {
   $('#newsContent').summernote({height: 500});

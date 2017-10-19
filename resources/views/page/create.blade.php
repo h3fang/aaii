@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 mr-auto ml-auto">
     <h1>Create Page</h1>
     
     @include('partials.errors')

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 ml-auto mr-auto">
     <hr>
     <h1>{{$news->title}}</h1>
     <p>Posted at: {{$news->created_at}}, Last Updated at: {{$news->updated_at}}</p>

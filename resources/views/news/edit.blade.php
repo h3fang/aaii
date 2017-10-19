@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 ml-auto mr-auto">
     <h1>Edit News</h1>
     
     @include('partials.errors')
@@ -42,7 +42,7 @@
 
 <script>
 $(document).ready(function() {
-  $('#content').summernote({height: 500});
+  $('#content').summernote({height: 450});
 });
 </script>
 @endsection

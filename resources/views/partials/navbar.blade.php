@@ -1,52 +1,60 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-     <a id="brand-logo" class='navbar-brand' href='/'><img id="brand-img" src="/image/logo1.svg"/></a>
-     <!--<span class='navbar-brand'>Advanced Avionics and Intelligent Information Lab</span>-->
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="{{Request::is("/") ? "active" : ""}}"><a href="/">Home</a></li>
-        <li class="{{( Request::is("news") || Request::is("news/*") ) ? "active" : ""}}"><a href="/news">News</a></li>
-        @foreach ($pages as $page)
-          <li class="{{Request::is($page->slug) ? "active" : ""}}"><a href="/{{$page->slug}}">{{$page->title}}</a></li>
-        @endforeach
-      </ul>
-      <div class="nav navbar-nav navbar-right">
-        <!--<a class="btn btn-primary navbar-btn" href="/login" role="button">Sign in</a>-->
-        <!--<a class="btn btn-primary navbar-btn" href="/register" role="button">Sign up</a>-->
-        @if (Auth::guest())
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-        @else
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <a class="navbar-brand" href="/" style="margin-right: 50px; padding: 0px; margin-top: 0px; margin-bottom: 0px;">
+    <img src="/image/logo1.svg" width="auto" height="42" alt=""/>
+  </a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/manage">Manage</a></li>
-                    <li>
-                        <a href="logout"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="logout" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
-            </li>
-        @endif
-      </div>
-    </div><!--/.navbar-collapse -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="{{Request::is("/") ? "nav-item active" : "nav-item"}}">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="{{ (Request::is("news") || Request::is("news/*")) ? "nav-item active" : "nav-item"}}">
+        <a class="nav-link" href="/news">News</a>
+      </li>
+      @foreach ($pages as $page)
+        <li class="{{Request::is($page->slug) ? "nav-item active" : "nav-item"}}">
+          <a class="nav-link" href="/{{$page->slug}}">{{$page->title}}</a>
+        </li>
+      @endforeach
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
+
+  <div class="navbar-nav navbar-right">
+    <!--<a class="btn btn-primary navbar-btn" href="/login" role="button">Sign in</a>-->
+    <!--<a class="btn btn-primary navbar-btn" href="/register" role="button">Sign up</a>-->
+    @if (Auth::guest())
+        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+    @else
+        <li class="nav-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="/manage">Manage</a></li>
+                <li>
+                    <a href="logout"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="logout" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            </ul>
+        </li>
+    @endif
+  </div>
+  
 </nav>

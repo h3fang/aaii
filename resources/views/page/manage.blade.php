@@ -11,40 +11,33 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 ml-auto mr-auto">
       <div class="row" style="display: flex; align-items: center;">
-    		<div class="col-md-10">
+    		<div class="col-md-8">
     			<h1>All Pages</h1>
     		</div>
     
-    		<div class="col-md-2">
+    		<div class="col-md-2 ml-auto">
     			<a href="{{ route('page.create') }}" class="btn btn-success btn-lg">Create Page</a>
     		</div>
     	</div>
     	
     	<hr>
     	
-      <div class="table-responsive">
-        <table class="table table-striped table-hover" style="width:100%">
-          <colgroup>
-            <col width=3%>
-            <col class="col-md-1">
-            <col class="col-md-2">
-            <col class="col-md-2">
-            <col class="col-md-2">
-            <col class="col-md-2">
-            <col class="col-md-2">
-          </colgroup>
-          <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Created by</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-            <th>Actions</th>
-          </tr>
-          <tbody id="pages_table" class="list-group">
+      <div class="container">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Created by</th>
+              <th>Created at</th>
+              <th>Updated at</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="pages_table">
             @foreach ($pages as $p)
               <tr class="item" data-id="{{$p->id}}">
                 <td><i class="fa fa-bars" aria-hidden="true"></i></td>
@@ -79,7 +72,7 @@
 @endsection
 
 @section('javascript')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.5.1/Sortable.min.js" integrity="sha256-OQFsXEK3UpvAlOjkWPTPt+jOHF04+PgHoZES3LTjWos=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js" integrity="sha256-ncVUo40HSaxFORNNlffKfkkhbsUHNLAzQ2SFlRUw7gA=" crossorigin="anonymous"></script>
   
   <script>
     Sortable.create(pages_table, {

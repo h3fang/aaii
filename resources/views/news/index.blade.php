@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 mr-auto ml-auto">
       @foreach ($news as $n)
         <h1><a href='/news/{{$n->id}}'>{{$n->title}}</a></h1>
         <p>Posted at: {{$n->created_at}}</p>

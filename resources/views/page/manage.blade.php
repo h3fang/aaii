@@ -72,7 +72,7 @@
 @endsection
 
 @section('javascript')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.5.1/Sortable.min.js" integrity="sha256-OQFsXEK3UpvAlOjkWPTPt+jOHF04+PgHoZES3LTjWos=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js" integrity="sha256-ncVUo40HSaxFORNNlffKfkkhbsUHNLAzQ2SFlRUw7gA=" crossorigin="anonymous"></script>
   
   <script>
     Sortable.create(pages_table, {

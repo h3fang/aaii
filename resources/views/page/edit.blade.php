@@ -3,8 +3,7 @@
 @section('title', 'Edit Page')
 
 @section('stylesheet')
-<!-- include summernote css-->
-<link href="/summernote/summernote.css" rel="stylesheet">
+@include('partials.summernote_css')
 @endsection
 
 @section('content')
@@ -36,9 +35,7 @@
 
 
 @section('javascript')
-<!-- include summernote js-->
-<!--<script src="/summernote/summernote.min.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.min.js" integrity="sha256-+xpvFKckte4EEA5HIpqOOD2jNuVZJEwS5hGZJx+aCgc=" crossorigin="anonymous"></script>
+@include('partials.summernote_js')
 
 <script>
 $(document).ready(function() {

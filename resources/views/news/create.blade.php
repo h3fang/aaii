@@ -3,9 +3,7 @@
 @section('title', 'Create News')
 
 @section('stylesheet')
-<!-- include summernote css-->
-<!--<link href="/summernote/summernote.css" rel="stylesheet">-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" integrity="sha256-aPZA+1C6XF5GxyRhgHoBK2JZkT+bagcjz+lk6i5vmVs=" crossorigin="anonymous" />
+@include('partials.summernote_css')
 @endsection
 
 @section('content')
@@ -36,9 +34,8 @@
 
 
 @section('javascript')
-<!-- include summernote js-->
-<!--<script src="/summernote/summernote.min.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.min.js" integrity="sha256-OFo8GrjjlTzhKYk4WNck1H5dIvBtJ0yArqCRFYVkdkU=" crossorigin="anonymous"></script>
+@include('partials.summernote_js')
+
 <script>
 $(document).ready(function() {
   $('#newsContent').summernote({height: 500});
